@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARK ELIXIR — Purity, Refined by Nature.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- reusable contour-line signature symbol -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="contour" viewBox="80 60 440 280">
+    <path d="M 341.7,200.0 C 341.3,204.0 333.2,208.0 328.9,211.5 C 324.5,215.0 321.2,219.2 315.5,221.0 C 309.8,222.9 302.0,222.7 294.8,222.5 C 287.5,222.3 277.8,222.6 271.9,220.1 C 266.1,217.5 262.1,212.0 259.6,207.4 C 257.1,202.7 254.2,196.2 257.1,192.2 C 260.0,188.2 270.8,186.3 277.1,183.6 C 283.3,180.9 288.2,176.5 294.4,176.0 C 300.6,175.5 308.2,178.7 314.3,180.6 C 320.3,182.6 326.2,184.5 330.8,187.7 C 335.4,191.0 342.0,196.0 341.7,200.0 Z"/>
+    <path d="M 363.1,200.0 C 363.8,207.9 367.4,218.4 361.4,224.5 C 355.3,230.5 338.7,233.4 326.9,236.5 C 315.0,239.5 302.5,243.0 290.1,242.6 C 277.7,242.2 262.7,238.9 252.5,234.0 C 242.2,229.1 231.8,220.7 228.6,213.0 C 225.5,205.3 229.2,195.5 233.5,187.9 C 237.8,180.3 244.6,171.6 254.2,167.2 C 263.8,162.8 278.7,162.5 291.1,161.5 C 303.5,160.4 317.6,158.5 328.7,161.1 C 339.7,163.7 351.5,170.7 357.3,177.2 C 363.0,183.7 362.4,192.1 363.1,200.0 Z"/>
+    <path d="M 398.4,200.0 C 397.2,211.7 393.8,223.8 384.8,233.8 C 375.7,243.8 360.6,256.1 344.2,260.1 C 327.9,264.1 304.3,260.4 286.6,257.8 C 268.8,255.2 250.2,251.5 237.8,244.5 C 225.4,237.6 216.7,226.1 212.2,216.0 C 207.7,205.9 206.0,193.5 210.7,183.7 C 215.4,174.0 227.6,164.2 240.3,157.3 C 253.0,150.4 269.8,144.7 286.6,142.4 C 303.5,140.1 324.2,139.9 341.6,143.5 C 359.1,147.0 382.1,154.1 391.5,163.5 C 401.0,172.9 399.5,188.3 398.4,200.0 Z"/>
+    <path d="M 427.2,200.0 C 428.5,214.2 423.5,232.6 410.8,244.2 C 398.2,255.7 372.7,263.7 351.2,269.5 C 329.7,275.3 303.7,280.9 281.7,278.9 C 259.7,277.0 235.9,267.3 219.4,257.6 C 203.0,248.0 190.2,234.6 183.2,221.3 C 176.2,207.9 171.8,191.0 177.7,177.7 C 183.6,164.5 201.5,151.3 218.8,141.9 C 236.2,132.5 258.8,124.6 281.8,121.4 C 304.8,118.2 336.8,116.4 357.0,122.7 C 377.1,128.9 391.1,146.1 402.8,159.0 C 414.6,171.9 425.9,185.8 427.2,200.0 Z"/>
+    <path d="M 475.3,200.0 C 475.6,218.2 455.2,239.0 437.6,254.8 C 420.0,270.6 396.9,286.1 369.8,294.8 C 342.8,303.5 304.2,310.5 275.1,307.2 C 246.1,303.8 218.0,287.7 195.6,274.7 C 173.1,261.7 149.8,246.4 140.4,229.1 C 130.9,211.7 131.5,189.3 138.8,170.7 C 146.1,152.0 161.1,128.1 184.3,117.2 C 207.5,106.3 247.9,105.8 278.0,105.0 C 308.0,104.2 338.3,105.4 364.7,112.2 C 391.0,119.0 417.6,131.2 436.0,145.8 C 454.5,160.4 475.0,181.8 475.3,200.0 Z"/>
+    <path d="M 498.0,200.0 C 498.6,222.1 487.4,248.2 468.3,267.1 C 449.2,285.9 416.1,304.2 383.4,313.2 C 350.6,322.3 307.8,324.4 271.9,321.4 C 235.9,318.3 194.6,309.2 167.5,294.8 C 140.4,280.4 117.2,256.1 109.0,234.8 C 100.7,213.5 108.0,188.3 118.1,166.9 C 128.1,145.5 143.3,120.2 169.2,106.4 C 195.0,92.6 238.0,86.3 273.1,83.9 C 308.1,81.6 347.5,83.7 379.5,92.1 C 411.4,100.5 444.8,116.4 464.6,134.4 C 484.3,152.4 497.4,177.9 498.0,200.0 Z"/>
+  </symbol>
+</svg>
+
+<!-- ============================================
+     NAV
+============================================ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <img src="assets/images/logo.png" alt="Dark Elixir logo — mountain mark" class="brand-mark">
+      <span class="brand-text">DARK ELIXIR<span class="sub">GILGIT&nbsp;·&nbsp;BALTISTAN</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#products-catalog">Catalog</a></li>
+      <li><a href="#" id="navLinkAccount">Account</a></li>
+      <li><a href="#" id="navLinkAdmin" style="display:none;">Admin</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="#" class="nav-account" id="navAccountBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        <span id="navAccountLabel">Account</span>
+      </a>
+      <button class="cart-btn" id="cartToggle" aria-label="Open cart, 0 items" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/>
+          <circle cx="9.5" cy="20.5" r="1"/><circle cx="17.5" cy="20.5" r="1"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#top">Home</a>
+  <a href="#products-catalog">Catalog</a>
+  <a href="#" id="mobileAccountBtn">Account</a>
+  <a href="#" id="mobileAdminBtn" style="display:none;">Admin</a>
+</div>
+
+<main id="top">
+
+  <!-- ============================================
+       HERO
+  ============================================ -->
+  <section class="hero">
+    <div class="hero-copy">
+      <svg class="contour-mark" viewBox="80 60 440 280"><use href="#contour"/></svg>
+      <div class="hero-eyebrow eyebrow">Haramosh Valley — 12,000FT</div>
+      <h1 class="hero-title">Purity, <em>Refined</em><br>by&nbsp;Nature.</h1>
+      <p class="hero-para">Every batch begins above the tree line, where the Karakoram meets the western Himalaya. We hand-harvest, purify slowly, and test each batch for purity — no fillers, no synthetic shortcuts, nothing added to make nature seem more impressive than it already is.</p>
+      <div class="hero-actions">
+        <a href="#products-catalog" class="btn-primary">
+          Shop Collection
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#journey" class="btn-ghost">Our Process</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/images/hero-poster.jpg"
+        aria-label="Shilajit resin being harvested and processed in the Karakoram mountains">
+        <source src="assets/video/hero-bg.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRODUCT CATALOG (full grid)
+  ============================================ -->
+  <section class="section" id="products-catalog">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Full Catalog</div>
+        <h2>Every jar, every batch.</h2>
+        <p>Browse the full collection below. Filter by ingredient to jump straight to what you're after.</p>
+      </div>
+
+      <div class="filter-pills" role="tablist" aria-label="Filter products by category">
+        <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-pill" data-filter="Shilajit" role="tab" aria-selected="false">Shilajit</button>
+        <button class="filter-pill" data-filter="Sea Buckthorn" role="tab" aria-selected="false">Sea Buckthorn</button>
+      </div>
+
+      <div class="db-grid" id="dbGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THE JOURNEY / PROCESS
+  ============================================ -->
+  <section class="section" id="journey">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">From the Rock and the Berry</div>
+        <h2>Two ingredients, prepared the traditional way.</h2>
+        <p>Raw material straight off the mountain isn't something you'd want on a spoon. Both of our ingredients follow a slow, traditional process — no shortcuts, no aggressive heat, no synthetic extraction.</p>
+      </div>
+
+      <div class="process-toggle" role="tablist" aria-label="Choose a process">
+        <button class="toggle-btn active" data-target="shilajit" role="tab" aria-selected="true">Shilajit</button>
+        <button class="toggle-btn" data-target="seabuckthorn" role="tab" aria-selected="false">Sea Buckthorn</button>
+      </div>
+
+      <div class="process-grid process-panel active" id="panel-shilajit">
+        <ol class="process-steps">
+          <li class="process-step">
+            <span class="process-index">01</span>
+            <div><h4>Dissolving</h4><p>Raw shilajit is dissolved in purified water, letting soluble compounds separate from insoluble rock and plant debris.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">02</span>
+            <div><h4>Filtering</h4><p>The solution passes through fine filtration layers to remove sediment and unwanted material.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">03</span>
+            <div><h4>Slow evaporation</h4><p>The filtered liquid is gently concentrated — no aggressive heating, no rushing the mountain.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">04</span>
+            <div><h4>Concentration</h4><p>The process continues until the characteristic thick, dark resin remains.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">05</span>
+            <div><h4>Testing</h4><p>Every batch is tested for purity and contaminants, including heavy metals, before it's packaged.</p></div>
+          </li>
+        </ol>
+
+        <div class="process-media">
+          <img src="assets/images/process-shilajit.jpg" alt="Triptych: raw shilajit dissolving in a copper vessel, being filtered through cloth, and slow-evaporating in trays against a Karakoram backdrop">
+          <div class="process-media-cap"><span>Dissolving → Filtering → Evaporation</span><span>Haramosh Valley</span></div>
+        </div>
+      </div>
+
+      <div class="process-grid process-panel" id="panel-seabuckthorn" style="display:none;">
+        <ol class="process-steps">
+          <li class="process-step">
+            <span class="process-index">01</span>
+            <div><h4>Harvesting</h4><p>Berries are hand-picked from hardy shrubs across the high-altitude shrublands of Gilgit-Baltistan.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">02</span>
+            <div><h4>Sun-drying</h4><p>Berries are spread across bamboo trays and dried naturally beneath the Karakoram sun — no forced heat.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">03</span>
+            <div><h4>Hand-grinding</h4><p>Dried berries are ground in stone mortars the traditional way, without industrial processing.</p></div>
+          </li>
+          <li class="process-step">
+            <span class="process-index">04</span>
+            <div><h4>Batch testing</h4><p>Every batch is tested before packaging to preserve the berries' naturally occurring vitamin C and antioxidants.</p></div>
+          </li>
+        </ol>
+
+        <div class="process-media">
+          <img src="assets/images/process-seabuckthorn.jpg" alt="Triptych: sea buckthorn berries sun-drying on bamboo trays, being hand-ground in a stone mortar, and the finished powder in a wooden bowl">
+          <div class="process-media-cap"><span>Drying → Grinding → Powder</span><span>Gilgit-Baltistan</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CATALOG PREVIEW
+  ============================================ -->
+  <section class="section" id="catalog">
+    <div class="wrap">
+      <div class="catalog-head">
+        <div>
+          <div class="eyebrow">The Collection</div>
+          <h2>Two origins. One standard of purity.</h2>
+        </div>
+        <p style="max-width:380px; font-size:14.5px;">One is drawn from stone, formed over centuries beneath the Karakoram. The other grows wild in the harshest ground the mountains allow. Full catalog and checkout are coming soon.</p>
+      </div>
+
+      <div class="catalog-grid">
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-tag">Mineral · Rasayana</span>
+            <img src="assets/images/product-shilajit.jpg" alt="Dark Elixir purified shilajit resin jar photographed against the Gilgit-Baltistan skyline at sunrise">
+          </div>
+          <div class="product-info">
+            <h3>Himalayan Shilajit Resin</h3>
+            <p>Purified mineral-organic resin, hand-collected above 12,000 feet and slow-processed with no fillers or synthetic binders.</p>
+            <div class="product-foot">
+              <span class="product-price">FROM THE ROCK</span>
+              <a href="#" class="product-link">View Product <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media">
+            <span class="product-tag">Antioxidant · Berry</span>
+            <img src="assets/images/product-seabuckthorn.jpg" alt="A pile of dried sea buckthorn berries, deep orange and glossy">
+          </div>
+          <div class="product-info">
+            <h3>Sea Buckthorn</h3>
+            <p>Golden, high-altitude berries naturally rich in vitamin C, carotenoids and characteristic fatty acids — bright where shilajit is dark.</p>
+            <div class="product-foot">
+              <span class="product-price">FROM THE BERRY</span>
+              <a href="#" class="product-link">View Product <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SOURCING SPLIT
+  ============================================ -->
+  <section class="sourcing">
+    <div class="sourcing-media">
+      <img src="assets/images/harvest.jpg" alt="A mountaineer crouched on a Karakoram rock face above a glacier, hand-collecting shilajit resin with a small tool">
+    </div>
+    <div class="sourcing-copy">
+      <div class="eyebrow">The Harvest</div>
+      <h2>Collected on foot, in the valleys.</h2>
+      <p>Our sourcing happens deep in Haramosh Valley — across the high ground of Eskere, Daso and Kutwal. These aren't places you drive to. They're places you walk into, over glacial moraine and narrow goat tracks, with the Haramosh massif standing over everything.</p>
+      <p>Our team is made up of local mountaineers who grew up on these slopes and have spent years learning to identify genuine mountain shilajit. Only naturally exuded resin is collected — no drilling, no synthetic extraction, no shortcuts.</p>
+      <div class="place-list">
+        <span><b>Eskere</b></span>
+        <span><b>Daso</b></span>
+        <span><b>Kutwal</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TWO ORIGINS
+  ============================================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:56px;">
+        <div class="eyebrow">Two Ingredients, Shared Standard</div>
+        <h2>The rock and the berry.</h2>
+      </div>
+
+      <div class="origins">
+        <div class="origin-col">
+          <h3>Shilajit</h3>
+          <p>Dark, mineral-rich and <em>slowly formed within the mountain</em> — a complex substance the rock has been making since long before any of us were here.</p>
+        </div>
+        <div class="origins-divider"></div>
+        <div class="origin-col">
+          <h3>Sea Buckthorn</h3>
+          <p>Bright, acidic and <em>packed with naturally occurring plant compounds</em> — a hardy berry that survives cold, wind and thin mountain air.</p>
+        </div>
+
+        <div class="origins-media">
+          <img src="assets/images/berries-branch.jpg" alt="Sea buckthorn berries growing on a silvery-leafed branch in the high-altitude landscape of Gilgit-Baltistan">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROMISE
+  ============================================ -->
+  <section class="promise">
+    <svg class="contour-mark faint" viewBox="80 60 440 280"><use href="#contour"/></svg>
+    <div class="promise-inner">
+      <blockquote>"No unnecessary fillers. No synthetic shortcuts. No mystery ingredients — just carefully sourced Himalayan ingredients, properly prepared and honestly presented."</blockquote>
+      <div class="promise-sub">From the rock to the resin — <b>from our mountains to you.</b></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LAB CERTIFIED
+       To add your real certificate: replace the placeholder box below
+       with an <img src="assets/images/lab-certificate.jpg"> or a link
+       to a PDF (e.g. <a href="assets/docs/lab-certificate.pdf">).
+  ============================================ -->
+  <section class="section" id="lab-certified">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Purity, Verified</div>
+        <h2>Every batch, lab tested.</h2>
+        <p>Each production run is sent for independent lab testing before it ever reaches a jar — checked for purity and screened for heavy metals and contaminants. Certificates are published here as soon as each batch clears testing.</p>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+            <path d="M8.5 13.5 7 21l5-2.5L17 21l-1.5-7.5"/>
+          </svg>
+        </div>
+        <div class="cert-card-body">
+          <h3>Batch Certificate — Coming Soon</h3>
+          <p>Lab test results for the current batch will be published here. Once uploaded, this card will show the issuing lab, test date, and a link to view or download the full certificate.</p>
+        </div>
+        <span class="cert-status-pill">Pending Upload</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       Replace the placeholder href/text values below with your real
+       email, phone number, and social profile links.
+  ============================================ -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Questions, orders, or wholesale — reach out.</h2>
+        <p>We usually reply within a day. For order questions, include your order tracking number if you have one.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a href="mailto:hello@darkelixir.com" class="contact-card">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">hello@darkelixir.com</span>
+        </a>
+
+        <a href="tel:+923001234567" class="contact-card">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+          </span>
+          <span class="contact-label">Phone / WhatsApp</span>
+          <span class="contact-value">+92 300 1234567</span>
+        </a>
+
+        <a href="https://instagram.com/darkelixir" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">@darkelixir</span>
+        </a>
+
+        <a href="https://facebook.com/darkelixir" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </span>
+          <span class="contact-label">Facebook</span>
+          <span class="contact-value">/darkelixir</span>
+        </a>
+
+        <a href="https://linkedin.com/company/darkelixir" target="_blank" rel="noopener" class="contact-card">
+          <span class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4.5a2 2 0 0 1 4 0V17M11 12.5V17"/></svg>
+          </span>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">Dark Elixir</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <img src="assets/images/logo.png" alt="Dark Elixir logo — mountain mark" class="brand-mark">
+          <span class="brand-text">DARK ELIXIR<span class="sub">GILGIT&nbsp;·&nbsp;BALTISTAN</span></span>
+        </a>
+        <p>100% pure shilajit and sea buckthorn, sourced from the Karakoram and the western Himalaya. Hand-harvested, traditionally purified, independently tested.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#products-catalog">Shilajit Resin</a></li>
+          <li><a href="#products-catalog">Sea Buckthorn</a></li>
+          <li><a href="#products-catalog">Full Catalog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#journey">Our Process</a></li>
+          <li><a href="#lab-certified">Lab Certified</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col" id="footerAccountCol">
+        <h5>Account</h5>
+        <ul>
+          <li><a href="#" id="footerSignInBtn">Sign In</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="footer-bottom" style="margin-top:28px;">
+      <p class="footer-legal">© 2026 Dark Elixir, Gilgit-Baltistan. These statements have not been evaluated by a medical authority. Our products are traditional wellness supplements, not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/darkelixir" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     CART DRAWER + BACKDROP
+============================================ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Your Cart</h3>
+    <button class="drawer-close" id="cartClose" aria-label="Close cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+
+  <div class="drawer-items" id="drawerItems"></div>
+
+  <div class="drawer-empty" id="drawerEmpty">
+    <p>Your cart is empty.</p>
+    <a href="#products-catalog" class="btn-ghost" id="drawerEmptyLink">Browse the catalog</a>
+  </div>
+
+  <div class="drawer-foot" id="drawerFoot">
+
+    <div class="promo-box">
+      <input type="text" id="cartPromoInput" class="promo-input" placeholder="Promo Code" autocomplete="off">
+      <button type="button" class="promo-apply-btn" id="cartPromoApply">Apply</button>
+    </div>
+    <div class="promo-applied" id="cartPromoApplied" style="display:none;">
+      <span>Code <b id="cartPromoCode"></b> applied — you saved <b id="cartPromoSavings"></b></span>
+      <button type="button" class="promo-remove-btn" id="cartPromoRemove">Remove</button>
+    </div>
+    <p class="promo-error" id="cartPromoError" style="display:none;"></p>
+
+    <div class="drawer-subtotal-row">
+      <span>Subtotal</span>
+      <span id="drawerSubtotal">Rs. 0</span>
+    </div>
+    <div class="drawer-subtotal-row discount-row" id="drawerDiscountRow" style="display:none;">
+      <span>Discount</span>
+      <span id="drawerDiscount">-Rs. 0</span>
+    </div>
+    <div class="drawer-subtotal-row drawer-total-row">
+      <span>Total</span>
+      <span id="drawerTotal">Rs. 0</span>
+    </div>
+    <p class="drawer-note">Shipping and any applicable taxes are calculated at checkout.</p>
+    <button class="btn-checkout" id="proceedCheckout">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<!-- ============================================
+     CHECKOUT OVERLAY (Step 1 Shipping → Step 2 Review)
+============================================ -->
+<div class="checkout-overlay" id="checkoutOverlay" aria-hidden="true">
+  <div class="checkout-panel" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="checkout-head">
+      <div class="brand" style="pointer-events:none;">
+        <img src="assets/images/logo.png" alt="" class="brand-mark" style="width:26px;height:26px;">
+        <span class="brand-text" style="font-size:16px;">DARK ELIXIR</span>
+      </div>
+      <button class="drawer-close" id="checkoutClose" aria-label="Close checkout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+
+    <div class="checkout-steps">
+      <div class="checkout-step-indicator active" id="stepIndicator1">
+        <span class="step-num">01</span><span class="step-label">Shipping Address</span>
+      </div>
+      <div class="checkout-step-line"></div>
+      <div class="checkout-step-indicator" id="stepIndicator2">
+        <span class="step-num">02</span><span class="step-label">Review &amp; Confirm</span>
+      </div>
+    </div>
+
+    <div class="checkout-body">
+
+      <!-- STEP 1: SHIPPING -->
+      <form class="checkout-step" id="stepShipping" novalidate>
+        <div class="form-grid">
+          <label class="field span-2">
+            <span>Full Name</span>
+            <input type="text" name="fullName" required placeholder="Aisha Khan">
+          </label>
+          <label class="field span-2">
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="you@example.com">
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" name="phone" required placeholder="+92 300 1234567">
+          </label>
+          <label class="field">
+            <span>Country</span>
+            <select name="country" required>
+              <option value="">Select country</option>
+              <option>Pakistan</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>United Arab Emirates</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="field span-2">
+            <span>Street Address</span>
+            <input type="text" name="address" required placeholder="House / street, area">
+          </label>
+          <label class="field">
+            <span>City</span>
+            <input type="text" name="city" required placeholder="Skardu">
+          </label>
+          <label class="field">
+            <span>Postal Code</span>
+            <input type="text" name="postal" required placeholder="16100">
+          </label>
+        </div>
+
+        <div class="checkout-actions">
+          <span class="checkout-hint">Step 1 of 2</span>
+          <button type="submit" class="btn-primary" style="border-radius:2px;">
+            Continue to Review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- STEP 2: REVIEW -->
+      <div class="checkout-step" id="stepReview" style="display:none;">
+
+        <!-- ===== PAYMENT (shown first, right after Shipping) ===== -->
+        <div class="review-block payment-block">
+          <div class="payment-block-head">
+            <h4 style="margin-bottom:0;">Payment</h4>
+            <span class="sandbox-pill">Sandbox · Test Mode</span>
+          </div>
+
+          <div class="pay-tabs" role="tablist" aria-label="Choose a payment method">
+            <button type="button" class="pay-tab active" data-method="card" role="tab" aria-selected="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              Card
+            </button>
+            <button type="button" class="pay-tab" data-method="jazzcash" role="tab" aria-selected="false">JazzCash</button>
+            <button type="button" class="pay-tab" data-method="easypaisa" role="tab" aria-selected="false">Easypaisa</button>
+            <button type="button" class="pay-tab" data-method="raast" role="tab" aria-selected="false">Raast</button>
+          </div>
+
+          <!-- CARD -->
+          <div class="pay-panel active" id="pay-card">
+            <div class="form-grid">
+              <label class="field span-2">
+                <span>Card Number</span>
+                <input type="text" id="cardNumber" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19">
+              </label>
+              <label class="field">
+                <span>Expiry (MM/YY)</span>
+                <input type="text" id="cardExpiry" placeholder="12/29" maxlength="5">
+              </label>
+              <label class="field">
+                <span>CVV</span>
+                <input type="text" id="cardCvv" inputmode="numeric" placeholder="123" maxlength="4">
+              </label>
+              <label class="field span-2">
+                <span>Name on Card</span>
+                <input type="text" id="cardName" placeholder="Aisha Khan">
+              </label>
+            </div>
+            <p class="pay-hint">Test card: <b>4242 4242 4242 4242</b>, any future expiry, any CVV. Use <b>4000 0000 0000 0002</b> to simulate a decline.</p>
+          </div>
+
+          <!-- JAZZCASH -->
+          <div class="pay-panel" id="pay-jazzcash" style="display:none;">
+            <div class="form-grid">
+              <label class="field span-2">
+                <span>JazzCash Mobile Number</span>
+                <input type="tel" id="jazzcashNumber" placeholder="03001234567" maxlength="11">
+              </label>
+            </div>
+            <p class="pay-hint">Sandbox mode: enter any valid-format number (03XXXXXXXXX). In production, the customer approves the charge via an SMS PIN prompt on their phone.</p>
+          </div>
+
+          <!-- EASYPAISA -->
+          <div class="pay-panel" id="pay-easypaisa" style="display:none;">
+            <div class="form-grid">
+              <label class="field span-2">
+                <span>Easypaisa Mobile Number</span>
+                <input type="tel" id="easypaisaNumber" placeholder="03451234567" maxlength="11">
+              </label>
+            </div>
+            <p class="pay-hint">Sandbox mode: enter any valid-format number (03XXXXXXXXX). In production, the customer confirms via their Easypaisa app or an OTP prompt.</p>
+          </div>
+
+          <!-- RAAST -->
+          <div class="pay-panel" id="pay-raast" style="display:none;">
+            <div class="form-grid">
+              <label class="field span-2">
+                <span>Raast ID (Mobile Number or IBAN)</span>
+                <input type="text" id="raastId" placeholder="03001234567 or PK00XXXX0000000000000000">
+              </label>
+            </div>
+            <p class="pay-hint">Sandbox mode: instant bank transfer via the State Bank's Raast rail. In production this redirects to your banking app for approval.</p>
+          </div>
+
+          <p class="payment-error" id="paymentError" style="display:none;"></p>
+        </div>
+
+        <div class="review-block">
+          <h4>Shipping To</h4>
+          <div class="review-address" id="reviewAddress"></div>
+        </div>
+
+        <div class="review-block">
+          <h4>Order Items</h4>
+          <div class="review-items" id="reviewItems"></div>
+        </div>
+
+        <div class="review-block">
+          <h4>Promo Code</h4>
+          <div class="promo-box">
+            <input type="text" id="reviewPromoInput" class="promo-input" placeholder="Promo Code" autocomplete="off">
+            <button type="button" class="promo-apply-btn" id="reviewPromoApply">Apply</button>
+          </div>
+          <div class="promo-applied" id="reviewPromoApplied" style="display:none;">
+            <span>Code <b id="reviewPromoCode"></b> applied — you saved <b id="reviewPromoSavings"></b></span>
+            <button type="button" class="promo-remove-btn" id="reviewPromoRemove">Remove</button>
+          </div>
+          <p class="promo-error" id="reviewPromoError" style="display:none;"></p>
+        </div>
+
+        <div class="review-totals">
+          <div class="review-row"><span>Subtotal</span><span id="reviewSubtotal">Rs. 0</span></div>
+          <div class="review-row discount-row" id="reviewDiscountRow" style="display:none;"><span>Discount</span><span id="reviewDiscount">-Rs. 0</span></div>
+          <div class="review-row" id="reviewTaxRow" style="display:none;"><span>Tax</span><span id="reviewTax">Rs. 0</span></div>
+          <div class="review-row"><span>Delivery</span><span id="reviewDelivery">Rs. 0</span></div>
+          <div class="review-row review-total"><span>Total</span><span id="reviewTotal">Rs. 0</span></div>
+        </div>
+
+        <p class="checkout-disclaimer">Sandbox environment — this simulates a Pakistani payment gateway's test mode (cards, JazzCash, Easypaisa, Raast). No real funds move and no live API keys are used.</p>
+
+        <div class="checkout-actions">
+          <button type="button" class="btn-ghost" id="backToShipping">← Back to Shipping</button>
+          <button type="button" class="btn-primary btn-pay" id="placeOrderBtn" style="border-radius:2px;">
+            <span class="btn-pay-label">Pay <span id="payAmount">Rs. 0</span></span>
+            <svg class="btn-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9" stroke-opacity="0.25"/><path d="M21 12a9 9 0 0 0-9-9"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     ORDER CONFIRMATION SCREEN
+============================================ -->
+<div class="success-overlay" id="successOverlay" aria-hidden="true">
+  <div class="confirm-screen" role="dialog" aria-modal="true" aria-label="Order confirmation">
+
+    <div class="confirm-left">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <div class="eyebrow" style="margin-bottom:18px;">Payment Confirmed</div>
+      <h3>Order Placed!</h3>
+      <p>Thank you — your payment was approved in the sandbox environment and your order has been received.</p>
+
+      <div class="tracking-box">
+        <span>Order Tracking Number</span>
+        <b id="successOrderId">#DE-000000</b>
+      </div>
+
+      <div class="confirm-meta">
+        <div><span>Paid via</span><b id="successMethod">Card</b></div>
+        <div><span>Transaction ID</span><b id="successTxnId">TXN-000000</b></div>
+        <div><span>Amount Paid</span><b id="successAmount">Rs. 0</b></div>
+      </div>
+
+      <p class="success-sub" id="successSubNote">Sandbox transaction — no real funds were moved. A confirmation would normally also be emailed to you.</p>
+      <button class="btn-primary" id="successClose" style="border-radius:2px; margin-top:28px;">Continue Shopping</button>
+    </div>
+
+    <div class="confirm-right">
+      <h4>Order Summary</h4>
+      <div class="review-items" id="confirmItems"></div>
+      <div class="review-totals" style="margin-top:20px;">
+        <div class="review-row review-total"><span>Total Paid</span><span id="confirmTotal">Rs. 0</span></div>
+      </div>
+      <div class="review-block" style="margin-top:28px;">
+        <h4>Shipping To</h4>
+        <div class="review-address" id="confirmAddress"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================
+     ACCOUNT PORTAL — Sign In / Create Account
+============================================ -->
+<div class="checkout-overlay" id="authOverlay" aria-hidden="true">
+  <div class="checkout-panel auth-panel" role="dialog" aria-modal="true" aria-label="Account">
+    <div class="checkout-head">
+      <div class="brand" style="pointer-events:none;">
+        <img src="assets/images/logo.png" alt="" class="brand-mark" style="width:26px;height:26px;">
+        <span class="brand-text" style="font-size:16px;">DARK ELIXIR</span>
+      </div>
+      <button class="drawer-close" id="authClose" aria-label="Close account portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+
+    <div class="pay-tabs auth-tabs" role="tablist" aria-label="Sign in or create an account">
+      <button type="button" class="pay-tab active" data-auth-tab="signin" role="tab" aria-selected="true">Sign In</button>
+      <button type="button" class="pay-tab" data-auth-tab="signup" role="tab" aria-selected="false">Create Account</button>
+    </div>
+
+    <div class="checkout-body">
+
+      <!-- SIGN IN -->
+      <form class="checkout-step" id="signinForm" novalidate>
+        <div class="form-grid">
+          <label class="field span-2">
+            <span>Email</span>
+            <input type="email" id="signinEmail" required placeholder="you@example.com">
+          </label>
+          <label class="field span-2">
+            <span>Password</span>
+            <input type="password" id="signinPassword" required placeholder="••••••••">
+          </label>
+        </div>
+        <p class="payment-error" id="signinError" style="display:none;"></p>
+        <div class="checkout-actions">
+          <span class="checkout-hint">New here? Use the Create Account tab.</span>
+          <button type="submit" class="btn-primary" style="border-radius:2px;">Sign In</button>
+        </div>
+      </form>
+
+      <!-- CREATE ACCOUNT -->
+      <form class="checkout-step" id="signupForm" novalidate style="display:none;">
+        <div class="form-grid">
+          <label class="field span-2">
+            <span>Full Name</span>
+            <input type="text" id="signupName" required placeholder="Aisha Khan">
+          </label>
+          <label class="field span-2">
+            <span>Email</span>
+            <input type="email" id="signupEmail" required placeholder="you@example.com">
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input type="password" id="signupPassword" required placeholder="Min. 6 characters">
+          </label>
+          <label class="field">
+            <span>Confirm Password</span>
+            <input type="password" id="signupConfirm" required placeholder="Repeat password">
+          </label>
+        </div>
+        <p class="pay-hint">This is a client-side demo: accounts are stored in your browser only (not on a server), and passwords are never sent anywhere. Don't reuse a real password here.</p>
+        <p class="payment-error" id="signupError" style="display:none;"></p>
+        <div class="checkout-actions">
+          <span class="checkout-hint">Already have an account? Use the Sign In tab.</span>
+          <button type="submit" class="btn-primary" style="border-radius:2px;">Create Account</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PROFILE DASHBOARD
+============================================ -->
+<div class="checkout-overlay" id="dashboardOverlay" aria-hidden="true">
+  <div class="checkout-panel dashboard-panel" role="dialog" aria-modal="true" aria-label="Your account">
+    <div class="checkout-head">
+      <div class="brand" style="pointer-events:none;">
+        <img src="assets/images/logo.png" alt="" class="brand-mark" style="width:26px;height:26px;">
+        <span class="brand-text" style="font-size:16px;">DARK ELIXIR</span>
+      </div>
+      <button class="drawer-close" id="dashboardClose" aria-label="Close account">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+
+    <div class="checkout-body">
+      <div class="dash-head">
+        <div class="dash-avatar" id="dashAvatar">A</div>
+        <div class="dash-who">
+          <h3 id="dashName">—</h3>
+          <span id="dashEmail">—</span>
+          <span class="dash-meta" id="dashMeta">Member since —</span>
+        </div>
+        <button class="btn-ghost" id="signOutBtn">Sign Out</button>
+      </div>
+
+      <div class="review-block account-settings-block">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Account Settings</h4>
+        </div>
+
+        <div class="settings-row">
+          <label class="field">
+            <span>Full Name</span>
+            <input type="text" id="settingsFullName" placeholder="Your name">
+          </label>
+          <button type="button" class="btn-primary" id="updateNameBtn" style="border-radius:2px;">Update Name</button>
+        </div>
+        <p class="payment-error" id="nameUpdateError" style="display:none;"></p>
+
+        <div class="settings-divider"></div>
+
+        <h5 class="settings-subhead">Change Password</h5>
+        <div class="form-grid">
+          <label class="field span-2">
+            <span>Current Password</span>
+            <input type="password" id="settingsCurrentPassword" placeholder="••••••••">
+          </label>
+          <label class="field">
+            <span>New Password</span>
+            <input type="password" id="settingsNewPassword" placeholder="Min. 6 characters">
+          </label>
+          <label class="field">
+            <span>Confirm New Password</span>
+            <input type="password" id="settingsConfirmPassword" placeholder="Repeat new password">
+          </label>
+        </div>
+        <p class="payment-error" id="passwordUpdateError" style="display:none;"></p>
+        <p class="pay-hint" id="passwordUpdateSuccess" style="display:none;"></p>
+        <button type="button" class="btn-primary" id="updatePasswordBtn" style="border-radius:2px; margin-top:16px;">Update Password</button>
+      </div>
+
+      <div class="review-block" style="margin-top:8px;">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Order History</h4>
+          <span class="sandbox-pill">Visible to you only</span>
+        </div>
+        <div class="order-history-grid" id="orderHistoryGrid"></div>
+        <div class="drawer-empty" id="orderHistoryEmpty" style="display:none; padding:32px 0;">
+          <p>No orders yet.</p>
+          <a href="#products-catalog" class="btn-ghost" id="orderHistoryEmptyLink">Browse the catalog</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     ADMIN DASHBOARD
+============================================ -->
+<div class="checkout-overlay" id="adminOverlay" aria-hidden="true">
+  <div class="checkout-panel admin-panel" role="dialog" aria-modal="true" aria-label="Admin Dashboard">
+    <div class="checkout-head">
+      <div class="brand" style="pointer-events:none;">
+        <img src="assets/images/logo.png" alt="" class="brand-mark" style="width:26px;height:26px;">
+        <span class="brand-text" style="font-size:16px;">ADMIN DASHBOARD</span>
+      </div>
+      <button class="drawer-close" id="adminClose" aria-label="Close admin dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+
+    <div class="checkout-body">
+
+      <!-- METRICS ROW -->
+      <div class="admin-metrics">
+        <div class="metric-card">
+          <span class="metric-label">Total Gross Sales Revenue</span>
+          <span class="metric-value" id="metricRevenue">Rs. 0</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">Total Orders Processed</span>
+          <span class="metric-value" id="metricOrders">0</span>
+        </div>
+        <div class="metric-card metric-alert">
+          <span class="metric-label">Low Stock Alerts</span>
+          <span class="metric-value" id="metricLowStock">0</span>
+        </div>
+      </div>
+
+      <div class="admin-columns">
+
+        <!-- ORDER MANAGEMENT -->
+        <div class="admin-block">
+          <div class="payment-block-head">
+            <h4 style="margin-bottom:0;">Order Management</h4>
+            <span class="sandbox-pill">All Orders</span>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersBody"></tbody>
+            </table>
+            <div class="drawer-empty" id="adminOrdersEmpty" style="display:none; padding:28px 0;">
+              <p>No orders logged yet.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVENTORY TRACKING -->
+        <div class="admin-block">
+          <div class="payment-block-head">
+            <h4 style="margin-bottom:0;">Inventory Tracking</h4>
+            <span class="sandbox-pill">Live Catalog</span>
+          </div>
+
+          <details class="new-product-details">
+            <summary>+ Add New Product</summary>
+            <div class="new-product-form">
+              <label class="field span-2">
+                <span>Title</span>
+                <input type="text" id="newProductTitle" placeholder="Himalayan Shilajit Resin — 30g">
+              </label>
+              <label class="field span-2">
+                <span>Description</span>
+                <input type="text" id="newProductDesc" placeholder="Short one-line description">
+              </label>
+              <label class="field">
+                <span>Category</span>
+                <select id="newProductCategory">
+                  <option value="Shilajit">Shilajit</option>
+                  <option value="Sea Buckthorn">Sea Buckthorn</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Price (Rs.)</span>
+                <input type="number" id="newProductPrice" min="0" step="1" placeholder="3500">
+              </label>
+              <label class="field">
+                <span>Stock</span>
+                <input type="number" id="newProductStock" min="0" step="1" placeholder="20">
+              </label>
+              <label class="field span-2">
+                <span>Image URL</span>
+                <input type="text" id="newProductImage" placeholder="assets/images/product-shilajit.jpg or a full https:// URL">
+              </label>
+              <button type="button" class="btn-primary" id="createProductBtn" style="border-radius:2px;">Add Product</button>
+            </div>
+            <p class="payment-error" id="productCreateError" style="display:none;"></p>
+          </details>
+
+          <div class="inventory-list" id="inventoryList"></div>
+        </div>
+
+      </div>
+
+      <!-- PROMO CODE MANAGEMENT -->
+      <div class="admin-block admin-promo-block">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Promo Codes</h4>
+          <span class="sandbox-pill">Discounts</span>
+        </div>
+
+        <div class="promo-create-row">
+          <label class="field">
+            <span>Code</span>
+            <input type="text" id="newPromoCode" placeholder="SUMMER20" maxlength="20">
+          </label>
+          <label class="field">
+            <span>Type</span>
+            <select id="newPromoType">
+              <option value="percentage">Percentage</option>
+              <option value="flat">Flat (Rs.)</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Value</span>
+            <input type="number" id="newPromoValue" min="0" step="0.01" placeholder="10">
+          </label>
+          <button type="button" class="btn-primary" id="createPromoBtn" style="border-radius:2px;">Create Code</button>
+        </div>
+        <p class="payment-error" id="promoCreateError" style="display:none;"></p>
+
+        <div class="promo-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="adminPromoBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DELIVERY & TAX SETTINGS -->
+      <div class="admin-block admin-promo-block">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Delivery &amp; Tax</h4>
+          <span class="sandbox-pill">Checkout Settings</span>
+        </div>
+
+        <div class="delivery-settings-row">
+          <div class="delivery-mode-toggle">
+            <button type="button" class="pay-tab delivery-mode-btn" data-mode="flat">Charge for Delivery</button>
+            <button type="button" class="pay-tab delivery-mode-btn" data-mode="free">Free Delivery</button>
+          </div>
+
+          <label class="field" id="deliveryChargeField">
+            <span>Delivery Charge (Rs.)</span>
+            <input type="number" id="deliveryChargeInput" min="0" step="1" placeholder="200">
+          </label>
+
+          <label class="field">
+            <span>Tax Rate (%)</span>
+            <input type="number" id="taxRateInput" min="0" max="100" step="0.1" placeholder="0">
+          </label>
+
+          <button type="button" class="btn-primary" id="saveSettingsBtn" style="border-radius:2px;">Save Settings</button>
+        </div>
+        <p class="pay-hint">Delivery and tax apply at checkout, on top of the cart subtotal (after any promo discount). Set delivery charge to 0 or switch to "Free Delivery" to waive it site-wide.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     PRODUCT DETAIL VIEW + RECOMMENDATIONS
+============================================ -->
+<div class="checkout-overlay" id="productOverlay" aria-hidden="true">
+  <div class="checkout-panel product-detail-panel" role="dialog" aria-modal="true" aria-label="Product details">
+    <div class="checkout-head">
+      <div class="brand" style="pointer-events:none;">
+        <img src="assets/images/logo.png" alt="" class="brand-mark" style="width:26px;height:26px;">
+        <span class="brand-text" style="font-size:16px;">DARK ELIXIR</span>
+      </div>
+      <button class="drawer-close" id="productClose" aria-label="Close product details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+
+    <div class="checkout-body">
+      <div class="product-detail-grid">
+        <div class="product-detail-media">
+          <img id="pdImage" src="" alt="">
+          <span class="oos-badge" id="pdOosBadge" style="display:none;">Out of Stock</span>
+        </div>
+        <div class="product-detail-info">
+          <span class="db-card-tag pd-tag" id="pdCategory"></span>
+          <h2 class="product-detail-title" id="pdTitle"></h2>
+          <div class="pd-rating-line" id="pdRatingLine"></div>
+          <p class="product-detail-desc" id="pdDesc"></p>
+          <div class="product-detail-price-row">
+            <span class="product-detail-price" id="pdPrice"></span>
+            <span class="db-stock-line" id="pdStock" style="margin-top:0;"></span>
+          </div>
+          <button class="btn-primary btn-pay" id="pdAddBtn" style="border-radius:2px; margin-top:24px; width:100%;">
+            <span class="btn-pay-label">Add to Cart</span>
+          </button>
+        </div>
+      </div>
+
+      <hr class="rule" style="margin:52px 0 36px;">
+
+      <div class="reviews-section">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Customer Reviews</h4>
+          <span class="sandbox-pill" id="reviewAvgBadge">No reviews yet</span>
+        </div>
+
+        <div class="review-list" id="reviewList"></div>
+
+        <div class="review-form-block">
+          <h5>Write a Review</h5>
+          <div class="star-input" id="starInput">
+            <button type="button" class="star-btn" data-star="1" aria-label="1 star">★</button>
+            <button type="button" class="star-btn" data-star="2" aria-label="2 stars">★</button>
+            <button type="button" class="star-btn" data-star="3" aria-label="3 stars">★</button>
+            <button type="button" class="star-btn" data-star="4" aria-label="4 stars">★</button>
+            <button type="button" class="star-btn" data-star="5" aria-label="5 stars">★</button>
+          </div>
+          <textarea id="reviewComment" class="review-textarea" placeholder="Share your experience with this product..." rows="3"></textarea>
+          <p class="payment-error" id="reviewError" style="display:none;"></p>
+          <button type="button" class="btn-primary" id="submitReviewBtn" style="border-radius:2px;">Submit Review</button>
+        </div>
+      </div>
+
+      <hr class="rule" style="margin:52px 0 36px;">
+
+      <div class="reco-section">
+        <div class="payment-block-head">
+          <h4 style="margin-bottom:0;">Recommended for You</h4>
+          <span class="sandbox-pill" id="recoBadge">AI Recommendations</span>
+        </div>
+
+        <div class="reco-loading" id="recoLoading">
+          <svg class="reco-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="9" stroke-opacity="0.2"/>
+            <path d="M21 12a9 9 0 0 0-9-9"/>
+          </svg>
+          <span>Loading Product Recommendations</span>
+        </div>
+
+        <div class="reco-grid" id="recoGrid" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="js/nav.js"></script>
+
+
+<script src="js/products.js"></script>
+<script src="js/promo.js"></script>
+<script src="js/settings.js"></script>
+
+<script src="js/cart-checkout.js"></script>
+
+<script src="js/account.js"></script>
+
+<script src="js/admin.js"></script>
+<script src="js/reviews.js"></script>
+
+<script src="js/product-detail.js"></script>
+
+</body>
+</html>
