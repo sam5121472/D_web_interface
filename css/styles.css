@@ -2217,7 +2217,7 @@
     border:1px solid var(--rule);
     margin-top:18px;
   }
-  .review-row{
+  .customer-review-row{
     background:var(--bg);
     padding:20px 22px;
     display:flex;
@@ -2283,3 +2283,170 @@
   .review-textarea:focus{ border-color:var(--gold); }
 
 
+
+/* ============================================
+   REDESIGN PASS — grey-toned sectioning + smooth edges
+   ------------------------------------------------
+   Two changes, layered on top of everything above rather than
+   rewritten from scratch:
+   1. Sections are told apart with alternating neutral-grey bands
+      instead of a hairline rule running the full width underneath
+      each one.
+   2. Every "boxy" surface (product cards, rows, buttons, inputs,
+      badges) gets soft, rounded corners, and the old "hairline grid"
+      trick (a 1px gap filled with a line color, faking borders
+      between cards) is replaced with real spacing + each card having
+      its own rounded, bordered face.
+   ============================================ */
+:root{
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+
+  /* true neutral greys, distinct from the warm brown-black base,
+     used purely to band sections apart */
+  --grey-band:  #17181a;
+  --grey-card:  #1c1d1f;
+  --grey-line:  rgba(255,255,255,0.07);
+}
+
+/* -- remove the long hairline dividers between sections -- */
+.section,
+.promise{ border-bottom:none; }
+.origins-divider{ display:none; }
+.place-list span{ border-right:none; padding-right:14px; }
+hr.rule{ display:none; }
+.settings-divider{ background:transparent; height:1px; margin:28px 0; border-top:1px dotted transparent; }
+.admin-promo-block{ border-top:none; margin-top:36px; padding-top:0; }
+
+/* -- alternating grey bands instead of lines -- */
+#journey,
+.sourcing,
+.promise,
+#contact{ background:var(--grey-band); }
+
+/* -- catalog + preview grids: real gaps, no hairline-grid trick -- */
+.db-grid,
+.catalog-grid,
+.reco-grid,
+.contact-grid,
+.admin-metrics,
+.inventory-list,
+.order-history-grid,
+.review-list{
+  gap:16px;
+  background:none;
+  border:none;
+}
+.admin-metrics{ gap:16px; }
+
+/* -- each card/row now carries its own soft, rounded, grey face -- */
+.db-card,
+.product-card,
+.reco-card,
+.contact-card,
+.metric-card,
+.cert-card,
+.inventory-row,
+.order-row,
+.customer-review-row,
+.cart-item{
+  background:var(--grey-card);
+  border:1px solid var(--grey-line);
+  border-radius:var(--radius-md);
+}
+.inventory-row,
+.order-row,
+.customer-review-row{ border-bottom:1px solid var(--grey-line); }
+.order-history-grid .order-row,
+.review-list .customer-review-row,
+.inventory-list .inventory-row{ margin:0; }
+.cart-item{ border-bottom:1px solid var(--grey-line); padding:20px; margin-bottom:14px; }
+.cart-item:last-child{ margin-bottom:0; }
+
+/* card media keeps its rounded corners flush with the card via overflow:hidden already in place */
+.db-card{ overflow:hidden; }
+.product-card{ overflow:hidden; }
+.reco-card{ overflow:hidden; }
+.cart-item-media{ border-radius:var(--radius-sm); }
+.inv-thumb{ border-radius:var(--radius-sm); }
+
+/* -- badges/tags become fully rounded pills, matching the filter pills -- */
+.db-card-tag,
+.product-tag,
+.oos-badge,
+.reco-match-tag,
+.cert-status-pill,
+.sandbox-pill,
+.order-row-status{ border-radius:999px; }
+
+/* -- buttons: soft rounded rectangles instead of hard squares -- */
+.btn-primary,
+.btn-checkout,
+.btn-pay,
+.db-view-btn,
+.db-add-btn,
+.reco-add-btn,
+.inv-save-btn,
+.inv-delete-btn,
+.promo-apply-btn,
+.promo-remove-btn,
+.delivery-mode-btn,
+.status-select,
+.qty-control,
+.new-product-details,
+.promo-status-toggle{
+  border-radius:var(--radius-sm);
+}
+.qty-control{ overflow:hidden; }
+.new-product-details{ overflow:hidden; }
+
+/* -- inputs: same soft rounding across every text/number/select/file field -- */
+.field input,
+.field select,
+.field textarea,
+.promo-input,
+.inv-field input{
+  border-radius:var(--radius-sm);
+}
+
+/* -- payment method tabs: same soft-rounded group treatment -- */
+.pay-tabs{
+  gap:8px;
+  background:none;
+  border:none;
+  overflow:visible;
+}
+.pay-tab{
+  background:var(--grey-card);
+  border:1px solid var(--grey-line);
+  border-radius:var(--radius-sm);
+}
+.pay-tab.active{ border-color:var(--gold); }
+
+/* -- table wraps + admin surfaces -- */
+.admin-table-wrap,
+.promo-table-wrap{
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:1px solid var(--grey-line);
+}
+.admin-table{ border-radius:0; }
+
+/* -- overlay side panels: soften just the leading edge, since they run
+      full-bleed against the screen edge (rounding all four corners on a
+      full-height drawer would look like a floating error, not a surface) -- */
+.checkout-panel,
+.auth-panel,
+.dashboard-panel,
+.admin-panel,
+.product-detail-panel{
+  border-radius:var(--radius-lg) 0 0 var(--radius-lg);
+}
+@media (max-width: 640px){
+  .checkout-panel,
+  .auth-panel,
+  .dashboard-panel,
+  .admin-panel,
+  .product-detail-panel{ border-radius:0; }
+}

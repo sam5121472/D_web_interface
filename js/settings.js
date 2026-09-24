@@ -1,30 +1,51 @@
 // ============================================
-// STORE SETTINGS (persisted client-side, localStorage-backed)
-// Fields: taxRate (%), deliveryMode ('free' | 'flat'), deliveryCharge (PKR)
+// STORE SETTINGS — backed by the Supabase `settings` table (one row)
 // ------------------------------------------------
-// Controlled from the Admin Dashboard's "Delivery & Tax" panel.
-// Read by the cart/checkout to compute the final chargeable total.
+// Anyone can read settings (checkout needs to compute the total);
+// only admins can update them — enforced by Row Level Security.
+//
+// cachedSettings is loaded once on page load (see app-init.js) and kept
+// in sync after every admin save, so the cart/checkout math (which runs
+// synchronously as the person types/clicks) can read it instantly
+// without an extra network round trip on every keystroke.
 // ============================================
-
-const SETTINGS_KEY = 'de_settings';
 
 const DEFAULT_SETTINGS = {
   taxRate: 0,
-  deliveryMode: 'flat',   // 'free' or 'flat'
+  deliveryMode: 'flat',
   deliveryCharge: 200
 };
 
-function getSettings(){
-  try {
-    const raw = localStorage.getItem(SETTINGS_KEY);
-    return raw ? { ...DEFAULT_SETTINGS, ...JSON.parse(raw) } : { ...DEFAULT_SETTINGS };
-  } catch (e) {
-    return { ...DEFAULT_SETTINGS };
+let cachedSettings = { ...DEFAULT_SETTINGS };
+
+async function loadSettings(){
+  const { data, error } = await sb.from('settings').select('*').eq('id', true).maybeSingle();
+  if (error || !data){
+    cachedSettings = { ...DEFAULT_SETTINGS };
+    return cachedSettings;
   }
+  cachedSettings = {
+    taxRate: Number(data.tax_rate),
+    deliveryMode: data.delivery_mode,
+    deliveryCharge: Number(data.delivery_charge)
+  };
+  return cachedSettings;
 }
 
-function saveSettings(settings){
-  try { localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {}
+function getSettings(){
+  return { ...cachedSettings };
+}
+
+async function saveSettings(settings){
+  const { error } = await sb.from('settings').update({
+    tax_rate: settings.taxRate,
+    delivery_mode: settings.deliveryMode,
+    delivery_charge: settings.deliveryCharge,
+    updated_at: new Date().toISOString()
+  }).eq('id', true);
+
+  if (!error) cachedSettings = { ...settings };
+  return !error;
 }
 
 function getDeliveryCharge(){

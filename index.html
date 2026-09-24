@@ -111,8 +111,6 @@
 
       <div class="filter-pills" role="tablist" aria-label="Filter products by category">
         <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="filter-pill" data-filter="Shilajit" role="tab" aria-selected="false">Shilajit</button>
-        <button class="filter-pill" data-filter="Sea Buckthorn" role="tab" aria-selected="false">Sea Buckthorn</button>
       </div>
 
       <div class="db-grid" id="dbGrid" aria-live="polite"></div>
@@ -561,7 +559,7 @@
 
         <div class="checkout-actions">
           <span class="checkout-hint">Step 1 of 2</span>
-          <button type="submit" class="btn-primary" style="border-radius:2px;">
+          <button type="submit" class="btn-primary">
             Continue to Review
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
@@ -682,7 +680,7 @@
 
         <div class="checkout-actions">
           <button type="button" class="btn-ghost" id="backToShipping">← Back to Shipping</button>
-          <button type="button" class="btn-primary btn-pay" id="placeOrderBtn" style="border-radius:2px;">
+          <button type="button" class="btn-primary btn-pay" id="placeOrderBtn">
             <span class="btn-pay-label">Pay <span id="payAmount">Rs. 0</span></span>
             <svg class="btn-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9" stroke-opacity="0.25"/><path d="M21 12a9 9 0 0 0-9-9"/></svg>
           </button>
@@ -719,7 +717,7 @@
       </div>
 
       <p class="success-sub" id="successSubNote">Sandbox transaction — no real funds were moved. A confirmation would normally also be emailed to you.</p>
-      <button class="btn-primary" id="successClose" style="border-radius:2px; margin-top:28px;">Continue Shopping</button>
+      <button class="btn-primary" id="successClose" style="margin-top:28px;">Continue Shopping</button>
     </div>
 
     <div class="confirm-right">
@@ -774,7 +772,7 @@
         <p class="payment-error" id="signinError" style="display:none;"></p>
         <div class="checkout-actions">
           <span class="checkout-hint">New here? Use the Create Account tab.</span>
-          <button type="submit" class="btn-primary" style="border-radius:2px;">Sign In</button>
+          <button type="submit" class="btn-primary">Sign In</button>
         </div>
       </form>
 
@@ -802,7 +800,7 @@
         <p class="payment-error" id="signupError" style="display:none;"></p>
         <div class="checkout-actions">
           <span class="checkout-hint">Already have an account? Use the Sign In tab.</span>
-          <button type="submit" class="btn-primary" style="border-radius:2px;">Create Account</button>
+          <button type="submit" class="btn-primary">Create Account</button>
         </div>
       </form>
 
@@ -846,7 +844,7 @@
             <span>Full Name</span>
             <input type="text" id="settingsFullName" placeholder="Your name">
           </label>
-          <button type="button" class="btn-primary" id="updateNameBtn" style="border-radius:2px;">Update Name</button>
+          <button type="button" class="btn-primary" id="updateNameBtn">Update Name</button>
         </div>
         <p class="payment-error" id="nameUpdateError" style="display:none;"></p>
 
@@ -869,7 +867,7 @@
         </div>
         <p class="payment-error" id="passwordUpdateError" style="display:none;"></p>
         <p class="pay-hint" id="passwordUpdateSuccess" style="display:none;"></p>
-        <button type="button" class="btn-primary" id="updatePasswordBtn" style="border-radius:2px; margin-top:16px;">Update Password</button>
+        <button type="button" class="btn-primary" id="updatePasswordBtn" style="margin-top:16px;">Update Password</button>
       </div>
 
       <div class="review-block" style="margin-top:8px;">
@@ -967,10 +965,8 @@
               </label>
               <label class="field">
                 <span>Category</span>
-                <select id="newProductCategory">
-                  <option value="Shilajit">Shilajit</option>
-                  <option value="Sea Buckthorn">Sea Buckthorn</option>
-                </select>
+                <input type="text" id="newProductCategory" list="categoryOptions" placeholder="Shilajit, or type a new one to create a section">
+                <datalist id="categoryOptions"></datalist>
               </label>
               <label class="field">
                 <span>Price (Rs.)</span>
@@ -981,10 +977,14 @@
                 <input type="number" id="newProductStock" min="0" step="1" placeholder="20">
               </label>
               <label class="field span-2">
-                <span>Image URL</span>
+                <span>Photo upload (recommended)</span>
+                <input type="file" id="newProductImageFile" accept="image/*">
+              </label>
+              <label class="field span-2">
+                <span>...or Image URL (used only if no photo is uploaded)</span>
                 <input type="text" id="newProductImage" placeholder="assets/images/product-shilajit.jpg or a full https:// URL">
               </label>
-              <button type="button" class="btn-primary" id="createProductBtn" style="border-radius:2px;">Add Product</button>
+              <button type="button" class="btn-primary" id="createProductBtn">Add Product</button>
             </div>
             <p class="payment-error" id="productCreateError" style="display:none;"></p>
           </details>
@@ -1017,7 +1017,7 @@
             <span>Value</span>
             <input type="number" id="newPromoValue" min="0" step="0.01" placeholder="10">
           </label>
-          <button type="button" class="btn-primary" id="createPromoBtn" style="border-radius:2px;">Create Code</button>
+          <button type="button" class="btn-primary" id="createPromoBtn">Create Code</button>
         </div>
         <p class="payment-error" id="promoCreateError" style="display:none;"></p>
 
@@ -1060,7 +1060,7 @@
             <input type="number" id="taxRateInput" min="0" max="100" step="0.1" placeholder="0">
           </label>
 
-          <button type="button" class="btn-primary" id="saveSettingsBtn" style="border-radius:2px;">Save Settings</button>
+          <button type="button" class="btn-primary" id="saveSettingsBtn">Save Settings</button>
         </div>
         <p class="pay-hint">Delivery and tax apply at checkout, on top of the cart subtotal (after any promo discount). Set delivery charge to 0 or switch to "Free Delivery" to waive it site-wide.</p>
       </div>
@@ -1099,7 +1099,7 @@
             <span class="product-detail-price" id="pdPrice"></span>
             <span class="db-stock-line" id="pdStock" style="margin-top:0;"></span>
           </div>
-          <button class="btn-primary btn-pay" id="pdAddBtn" style="border-radius:2px; margin-top:24px; width:100%;">
+          <button class="btn-primary btn-pay" id="pdAddBtn" style="margin-top:24px; width:100%;">
             <span class="btn-pay-label">Add to Cart</span>
           </button>
         </div>
@@ -1126,7 +1126,7 @@
           </div>
           <textarea id="reviewComment" class="review-textarea" placeholder="Share your experience with this product..." rows="3"></textarea>
           <p class="payment-error" id="reviewError" style="display:none;"></p>
-          <button type="button" class="btn-primary" id="submitReviewBtn" style="border-radius:2px;">Submit Review</button>
+          <button type="button" class="btn-primary" id="submitReviewBtn">Submit Review</button>
         </div>
       </div>
 
@@ -1153,6 +1153,9 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/supabase-client.js"></script>
+
 <script src="js/nav.js"></script>
 
 
@@ -1168,6 +1171,8 @@
 <script src="js/reviews.js"></script>
 
 <script src="js/product-detail.js"></script>
+
+<script src="js/app-init.js"></script>
 
 </body>
 </html>

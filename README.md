@@ -1,47 +1,71 @@
 # Dark Elixir
 
-A premium, editorial-style e-commerce storefront for Dark Elixir (Himalayan shilajit and sea buckthorn), built as a static site — plain HTML, CSS, and vanilla JavaScript, no build step or framework required.
+A premium, editorial-style e-commerce storefront for Dark Elixir (Himalayan shilajit and sea buckthorn) — plain HTML/CSS/vanilla JavaScript on the front end, with a real **Supabase** backend (Postgres database, Auth, and file storage) handling everything that used to live in `localStorage`.
 
 ## What's included
 
 - Sticky nav, hero, brand story, and sourcing sections
-- Filterable product catalog, priced in **PKR**, with a persisted (localStorage) inventory store — admins can add and remove products directly from the Admin Dashboard
-- Shopping cart drawer + two-step checkout with a **sandbox** Pakistani payment flow (card, JazzCash, Easypaisa, Raast — no real gateway or payment credentials are wired in), a promo/discount code system, and configurable **tax** and **delivery charges** (or free delivery) set from the Admin Dashboard
-- Client-side user accounts (sign up / sign in) with an order-history dashboard
-- Admin dashboard (sales metrics, order status management, inventory editing, product create/delete, promo code management, delivery & tax settings) — gated behind an `admin` role
-- Product detail view with star-rating **customer reviews** (average rating badge, review list, and a submission form for signed-in users) and a category-based "Recommended for You" panel
-- Contact section (email, phone/WhatsApp, Instagram, Facebook, LinkedIn) and a Lab Certified section ready for you to drop in a real test certificate — see the HTML comments above each section in `index.html` for exactly which placeholder values/images to swap
-- A full mobile responsiveness pass, including a fixed mobile-nav overlap bug: every multi-column layout collapses to a clean vertical stack on small screens, the desktop nav becomes a hamburger slide-out menu below 980px, interactive controls meet a 44px minimum touch target, and typography/spacing scale smoothly from ~360px phones through tablet and desktop widths
-- A muted, looping background video in the hero section (`assets/video/hero-bg.mp4`), with a poster-frame fallback image and a `prefers-reduced-motion` guard that keeps the hero on a static frame for users who've asked their OS for less motion
-- Scroll-reveal animations on section content and staggered fade-ins on dynamically-rendered product/recommendation cards, plus smoother hover/press transitions on primary buttons and cards
+- Filterable product catalog, priced in **PKR**, stored in a Postgres `products` table — admins can add, edit, and remove products from the Admin Dashboard, and **filter-pill categories are generated automatically** from whatever categories exist in the database. Type a brand-new category when adding a product and a new storefront section appears immediately; remove the last product in a category and its pill disappears — no code edits required.
+- Product photos can be uploaded straight from the Admin Dashboard (stored in a public Supabase Storage bucket) or linked by URL
+- Shopping cart drawer + two-step checkout with a **sandbox** Pakistani payment flow (card, JazzCash, Easypaisa, Raast — no real gateway or payment credentials are wired in), a database-backed promo/discount code system, and configurable **tax** and **delivery charges** (or free delivery) set from the Admin Dashboard and stored in the database
+- Real user accounts via **Supabase Auth** (email + password) with an order-history dashboard, backed by real password hashing and real sessions — not a browser-side placeholder
+- Admin dashboard (sales metrics, order status management, inventory editing, product create/delete, promo code management, delivery & tax settings) — gated by a `role` column enforced with **Postgres Row Level Security**, not just hidden in the browser
+- Product detail view with star-rating **customer reviews** (average rating badge, review list, submission form for signed-in users, stored in the database) and a category-based "Recommended for You" panel
+- Contact section and a Lab Certified section ready for you to drop in a real test certificate
+- Full mobile responsiveness pass, scroll-reveal animations, and a looping background hero video with a `prefers-reduced-motion` fallback
 
-**Important:** everything above runs entirely in the browser using `localStorage`. There is no backend, no database, and no real payment or AI integration. This is a front-end foundation meant to be wired up to real services later — see "Known limitations" below before using it for anything beyond a demo.
+## Backend architecture (Supabase)
+
+Everything the storefront reads or writes goes through Supabase:
+
+| Data | Table | Who can write |
+|---|---|---|
+| Products | `products` | Admins only |
+| Orders | `orders` | Customers create their own; only admins can change status |
+| Promo codes | `promo_codes` | Admins only |
+| Reviews | `reviews` | Any signed-in user, on their own review |
+| Tax/delivery | `settings` (single row) | Admins only |
+| User profile + role | `profiles` (1:1 with `auth.users`) | Users edit their own name; role is admin-only |
+
+Every rule above is enforced by **Row Level Security policies in Postgres** (see `/supabase/*.sql`), which means the "admin" gate is a real server-side check, not something a person could bypass by editing this site's JavaScript in their browser's dev tools.
+
+Product photos go in a public Supabase Storage bucket called `product-images`; anyone can view them, only admins can upload/replace/delete.
 
 ## Project structure
 
 ```
 dark-elixir/
-├── index.html              # Page markup
+├── index.html                 # Page markup
 ├── css/
-│   └── styles.css          # All styles (design tokens, layout, components)
+│   └── styles.css             # All styles (design tokens, layout, components)
 ├── js/
-│   ├── nav.js               # Sticky nav + mobile menu
-│   ├── products.js          # Product catalog data + rendering + filters
-│   ├── cart-checkout.js     # Cart drawer, checkout flow, sandbox payment
-│   ├── account.js           # Sign up / sign in, customer dashboard
-│   ├── admin.js              # Admin dashboard (metrics, orders, inventory)
-│   └── product-detail.js     # Product detail view + recommendations
+│   ├── supabase-client.js     # Supabase project URL + anon key, shared client
+│   ├── nav.js                 # Sticky nav + mobile menu
+│   ├── products.js            # Product catalog: loads from Supabase, renders, dynamic category filters
+│   ├── promo.js               # Promo code lookup/creation (Supabase)
+│   ├── settings.js            # Tax/delivery settings (Supabase)
+│   ├── cart-checkout.js       # Cart drawer, checkout flow, sandbox payment, order insert
+│   ├── account.js             # Supabase Auth sign up/in/out, customer dashboard, order history
+│   ├── admin.js                # Admin dashboard: metrics, orders, inventory, promo codes, settings, image upload
+│   ├── reviews.js              # Review read/write (Supabase)
+│   ├── product-detail.js       # Product detail view + recommendations + review UI
+│   └── app-init.js             # Loads session + settings once on page load, syncs nav on auth changes
+├── supabase/
+│   ├── 01_schema.sql            # Tables: profiles, products, orders, promo_codes
+│   ├── 02_security.sql          # Row Level Security policies + is_admin() helper
+│   ├── 03_reviews_and_settings.sql  # reviews + settings tables/policies
+│   └── 04_storage.sql           # product-images storage bucket + policies
 ├── assets/
-│   └── images/               # Product, process, and brand photography
+│   └── images/                  # Product, process, and brand photography
 ├── vercel.json
 └── .gitignore
 ```
 
-Scripts are loaded in the order above via plain `<script src>` tags (no bundler, no ES modules), so that order matters if you edit `index.html`.
+Scripts are loaded in the order shown in `index.html` via plain `<script src>` tags (no bundler, no ES modules) — `supabase-client.js` must load before every other app script, and `app-init.js` must load last.
 
 ## Running locally
 
-No build step needed. Any static file server works, for example:
+No build step needed. Any static file server works:
 
 ```bash
 npx serve .
@@ -49,20 +73,33 @@ npx serve .
 python3 -m http.server 8000
 ```
 
-Then open the printed local URL in your browser. (Opening `index.html` directly via `file://` also works, but a local server is closer to how it behaves once deployed.)
+Then open the printed local URL. The site talks to the live Supabase project configured in `js/supabase-client.js`, so you'll see real, shared data even when running locally.
 
-## Test accounts (seeded on first load)
+## The Supabase project
 
-| Role     | Email                  | Password     |
-|----------|-------------------------|--------------|
-| Admin    | samzyhassan7@gmail.com  | admin123     |
-| Customer | ayesha@example.com      | password123  |
-| Customer | bilal@example.com       | password123  |
-| Customer | fatima@example.com      | password123  |
+This site is wired to a Supabase project called **"Dark Elixir"** (ref `viqequtaazonfywilqvh`) in your account. The `supabase/*.sql` files are already applied there — they're kept in the repo so you can recreate the schema on a different project if you ever need to (Supabase → SQL Editor → paste each file in order, 01 through 04).
 
-Sign in as the admin account to see the "Admin" link appear in the nav. Change the default `admin123` password immediately after your first login — go to Account → Account Settings, where any signed-in user (including the admin) can update their name and password.
+**Free-tier note:** Supabase pauses inactive free projects after about a week of no API traffic. If the storefront suddenly can't load products, go to your Supabase dashboard and click "Restore project" — it takes a minute or two, no data is lost.
 
-## Test promo codes (seeded on first load)
+## Admin account
+
+| Role  | Email                  | Password  |
+|-------|-------------------------|-----------|
+| Admin | samzyhassan7@gmail.com  | admin123  |
+
+Sign in with this account to see the "Admin" link appear in the nav. **Change this password immediately** — Account → Account Settings (any signed-in user, including the admin, can update their own name and password there).
+
+To promote a different account to admin later (e.g. after a manager signs up normally through the site), run this once in the Supabase SQL Editor:
+
+```sql
+update public.profiles
+set role = 'admin'
+where id = (select id from auth.users where email = 'their-email@example.com');
+```
+
+Everyone who signs up through the site starts as a regular `customer` — this is intentional, so random sign-ups can never grant themselves admin access.
+
+## Test promo codes (seeded)
 
 | Code        | Type       | Value    | Status   |
 |-------------|------------|----------|----------|
@@ -74,46 +111,36 @@ Enter a code in the Promo Code field in the cart drawer or on Step 2 of checkout
 
 ## Delivery & tax
 
-Default settings on first load: a flat **Rs. 200** delivery charge and **0% tax**. Change either (or switch to free delivery) from the **Delivery & Tax** panel in the Admin Dashboard — Step 2 of checkout recalculates the total live.
+Default settings on first load: a flat **Rs. 200** delivery charge and **0% tax**, stored in the `settings` table. Change either (or switch to free delivery) from the **Delivery & Tax** panel in the Admin Dashboard — Step 2 of checkout recalculates the total live.
+
+## Adding new products & sections
+
+From the Admin Dashboard → Inventory panel:
+- **New category / section**: in the "Add Product" form, type a category name that doesn't exist yet (instead of picking an existing one). Saving the product creates that category, and a matching filter pill appears on the storefront immediately — no code changes needed.
+- **Photos**: use the file upload field to store the photo in Supabase (recommended), or paste an image URL if you'd rather host it elsewhere.
+- **Editing price/stock**: adjust the fields directly in the Inventory list and click Save.
+- **Removing a product**: click Remove in the Inventory list. If it was the last product in its category, that category's filter pill disappears from the storefront automatically.
 
 ## Reviews
 
-Product detail pages show a star rating average and a list of reviews, seeded with a handful of realistic ones. Anyone signed in can leave a rating + comment on any product — there's currently no purchase-verification check, which a real backend would typically add.
+Product detail pages show a star rating average and a list of reviews from the `reviews` table. Anyone signed in can leave a rating + comment on any product — there's currently no purchase-verification check, which you could add later as a policy that checks the `orders` table.
 
 ## Deploying — GitHub + Vercel
 
-1. **Push this project to GitHub**
-   ```bash
-   cd dark-elixir
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<your-repo>.git
-   git push -u origin main
-   ```
+This repo is already connected: `https://github.com/sam5121472/D_web_interface` → Vercel project `d-web-interface`. To ship these changes:
 
-2. **Import into Vercel**
-   - Go to [vercel.com/new](https://vercel.com/new) and sign in (GitHub login is easiest).
-   - Click **Import** next to the repository you just pushed.
-   - Framework Preset: choose **"Other"** (or leave it on auto-detect — there's no build step, Vercel will serve the static files as-is).
-   - Leave the Build Command and Output Directory blank — nothing to build.
-   - Click **Deploy**.
+```bash
+git add .
+git commit -m "Connect backend to Supabase"
+git push
+```
 
-3. Vercel will give you a live `*.vercel.app` URL within a few seconds. Every future `git push` to `main` redeploys automatically.
-
-No environment variables are required for anything currently in the project, since there's no real backend or API integration yet.
+Vercel redeploys automatically on every push to `main`. No environment variables are needed — the Supabase URL and anon key are public by design (see `js/supabase-client.js`) and access is controlled entirely by Row Level Security on the database side.
 
 ## Known limitations (read before going further)
 
-This was built in stages as a front-end foundation, and several features are explicitly **sandboxed/simulated** rather than production-ready:
-
-- **Contact & social links**: the email, phone number, and Instagram/Facebook/LinkedIn links in the Contact section and footer are placeholders (`hello@darkelixir.com`, `+92 300 1234567`, `@darkelixir`, etc.). Replace them with your real details before launch — search `index.html` for `mailto:`, `tel:`, `instagram.com`, `facebook.com`, and `linkedin.com` to find every spot.
-- **Lab Certified section**: currently shows a "Pending Upload" placeholder. Once you have a real certificate, replace the placeholder block in `index.html` (search for `id="lab-certified"`) with an image or a link to the PDF.
-
-- **Payments**: the checkout's card/JazzCash/Easypaisa/Raast flow is a sandbox simulation. No real gateway, merchant ID, or API key is used — including Stripe, which was requested at one point but isn't actually wired in for the same reason (a static file has nowhere secure to hold a secret key). The discounted total (after any promo code) is what gets passed to the sandbox charge function, so the amount is correct even though the gateway call itself is simulated. Real integration needs a backend to hold merchant credentials and sign requests server-side.
-- **Auth & passwords**: accounts, sessions, and passwords all live in `localStorage` and use a non-cryptographic placeholder hash. This is fine for a demo, not for real user data. A production build needs a real backend with proper password hashing (bcrypt/Argon2) and server-side session/authorization checks.
-- **Admin access control**: the Admin dashboard is gated by a `role` field checked in the browser. Someone editing their own browser's JavaScript could bypass this. Real access control must be enforced server-side, not just in the page's JS.
-- **"Recommended for You"**: this is a rule-based category matcher (same-category first, cross-category fallback), not a live AI/LLM call — there's nowhere secure to hold a model API key in a static file.
-
-If/when you're ready to make any of these real, the natural next step is a small backend (serverless functions work well on Vercel) to hold secrets and do the parts that shouldn't happen in the browser.
+- **Payments**: the checkout's card/JazzCash/Easypaisa/Raast flow is still a sandbox simulation. No real gateway, merchant ID, or API key is wired in. The discounted total (after any promo code, tax, and delivery) is what gets passed to the sandbox charge function, so the amount shown is correct even though the gateway call itself is simulated. Real integration needs a server (e.g. a Supabase Edge Function) to hold merchant credentials and sign requests — happy to help wire this up next if you want real payments.
+- **"Recommended for You"**: this is still a rule-based category matcher (same-category first, cross-category fallback), not a live AI/LLM call.
+- **Contact & social links / Lab Certified section**: still placeholders — search `index.html` for `mailto:`, `tel:`, `instagram.com`, `facebook.com`, `linkedin.com`, and `id="lab-certified"` to swap in your real details.
+- **Category name matching is case-sensitive**: "Shilajit" and "shilajit" would currently be treated as two different categories. Keep casing consistent when typing a category name, or ask for a normalization step to be added.
+- **Email confirmation**: if your Supabase project has "Confirm email" turned on (the default), new sign-ups need to click a confirmation link before they can sign in. You can turn this off in Supabase → Authentication → Providers → Email if you'd rather let people shop immediately after signing up.

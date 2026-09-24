@@ -211,14 +211,14 @@
     errorEl.style.display = 'block';
   }
 
-  function applyPromoFromInput(context){
+  async function applyPromoFromInput(context){
     const input = document.getElementById(context === 'cart' ? 'cartPromoInput' : 'reviewPromoInput');
     const codeStr = input.value.trim();
     if (!codeStr){
       showPromoError(context, 'Enter a promo code.');
       return;
     }
-    const promo = findActivePromo(codeStr);
+    const promo = await findActivePromo(codeStr);
     if (!promo){
       showPromoError(context, 'Invalid or expired code.');
       return;
@@ -560,7 +560,7 @@
     // Schema: { id, userId, items, address, paymentMethod, transactionId,
     //           subtotal, discount, promoCode, tax, delivery, total, status, createdAt }
     const currentUser = getCurrentUser();
-    saveOrder({
+    await saveOrder({
       id: orderId,
       userId: currentUser ? currentUser.id : null, // null = guest order, not visible in any dashboard
       items: snapshotItems.map(({product, qty, lineTotal}) => ({
